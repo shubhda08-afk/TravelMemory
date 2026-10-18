@@ -1,0 +1,125 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram name="Runtime architecture" id="page1">
+    <mxGraphModel dx="966" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aws" parent="1" style="rounded=1;arcSize=3;fillColor=none;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;whiteSpace=wrap;strokeColor=#888888;fontSize=12;fontStyle=1;dashed=1;" value="" vertex="1">
+          <mxGeometry height="606" width="600" x="40" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="fetier" parent="1" style="rounded=1;arcSize=3;fillColor=none;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;whiteSpace=wrap;strokeColor=#888888;fontSize=12;fontStyle=1;" value="Frontend tier" vertex="1">
+          <mxGeometry height="250" width="540" x="70" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="betier" parent="1" style="rounded=1;arcSize=3;fillColor=none;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;whiteSpace=wrap;strokeColor=#888888;fontSize=12;fontStyle=1;" value="Backend tier" vertex="1">
+          <mxGeometry height="258" width="540" x="70" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="fetg" parent="1" style="rounded=1;arcSize=3;fillColor=none;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;whiteSpace=wrap;strokeColor=#888888;fontSize=11;fontStyle=0;dashed=1;" value="" vertex="1">
+          <mxGeometry height="122" width="500" x="90" y="262" as="geometry" />
+        </mxCell>
+        <mxCell id="betg" parent="1" style="rounded=1;arcSize=3;fillColor=none;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;whiteSpace=wrap;strokeColor=#888888;fontSize=11;fontStyle=0;dashed=1;" value="" vertex="1">
+          <mxGeometry height="134" width="500" x="90" y="538" as="geometry" />
+        </mxCell>
+        <mxCell id="fealb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;b&gt;Frontend ALB&lt;/b&gt;&lt;br&gt;Listener 80 to frontend-tg" vertex="1">
+          <mxGeometry height="56" width="260" x="210" y="176" as="geometry" />
+        </mxCell>
+        <mxCell id="fe1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" value="&lt;b&gt;frontend-master&lt;/b&gt;" vertex="1">
+          <mxGeometry height="72" width="220" x="110" y="296" as="geometry" />
+        </mxCell>
+        <mxCell id="fe2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" value="&lt;b&gt;frontend-2&lt;/b&gt;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="72" width="220" x="350" y="296" as="geometry" />
+        </mxCell>
+        <mxCell id="bealb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;b&gt;Backend ALB&lt;/b&gt;&lt;br&gt;Listener 80 to backend-tg" vertex="1">
+          <mxGeometry height="56" width="260" x="210" y="456" as="geometry" />
+        </mxCell>
+        <mxCell id="be1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" value="&lt;b&gt;backend-master&lt;/b&gt;" vertex="1">
+          <mxGeometry height="86" width="220" x="110" y="572" as="geometry" />
+        </mxCell>
+        <mxCell id="be2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" value="&lt;b&gt;backend-2&lt;/b&gt;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="86" width="220" x="350" y="572" as="geometry" />
+        </mxCell>
+        <mxCell id="atlas" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" value="&lt;b&gt;MongoDB Atlas&lt;/b&gt;&lt;br&gt;Managed cluster, DB: travelmemory&lt;br&gt;Network access: 0.0.0.0/0" vertex="1">
+          <mxGeometry height="72" width="280" x="200" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" target="fealb" value="HTTP :80">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="74" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="fealb" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" target="fetg" value="Forwards HTTP :80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="fetg" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" target="bealb" value="API calls via baseUrl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="bealb" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" target="betg" value="Forwards HTTP :80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="betg" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" target="atlas" value="mongodb+srv connection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mj805MvYTKcg08WTsy8i-1" parent="1" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=#0079D6;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;align=center;fontSize=12;outlineConnect=0;spacingTop=-6;fontColor=#FFFFFF;sketch=0;shape=mxgraph.sitemap.profile;" value="User&#39;s Browser" vertex="1">
+          <mxGeometry height="70" width="120" x="280" y="-10" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Build and scale pipeline" id="page2">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="brow" value="Backend tier: steps 3, 6, 7, 8" style="rounded=1;arcSize=3;fillColor=none;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;whiteSpace=wrap;strokeColor=#888888;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="600" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="frow" value="Frontend tier: steps 4, 6, 7, 9" style="rounded=1;arcSize=3;fillColor=none;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;whiteSpace=wrap;strokeColor=#888888;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="164" width="600" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="&lt;b&gt;Master EC2&lt;/b&gt;&lt;br&gt;backend-master" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="66" y="68" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="&lt;b&gt;Create AMI&lt;/b&gt;&lt;br&gt;Image the master" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="210" y="68" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="&lt;b&gt;Clone EC2&lt;/b&gt;&lt;br&gt;backend-2" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="354" y="68" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="b4" value="&lt;b&gt;TG + ALB&lt;/b&gt;&lt;br&gt;Health: /hello" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="498" y="68" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="be1" value="" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" edge="1" parent="1" source="b1" target="b2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="be2" value="" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" edge="1" parent="1" source="b2" target="b3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="be3" value="" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" edge="1" parent="1" source="b3" target="b4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" value="&lt;b&gt;Master EC2&lt;/b&gt;&lt;br&gt;frontend-master" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="66" y="202" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="&lt;b&gt;Create AMI&lt;/b&gt;&lt;br&gt;Image the master" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="210" y="202" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="&lt;b&gt;Clone EC2&lt;/b&gt;&lt;br&gt;frontend-2" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="354" y="202" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="&lt;b&gt;TG + ALB&lt;/b&gt;&lt;br&gt;Health: /" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="498" y="202" width="116" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="fe1" value="" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" edge="1" parent="1" source="f1" target="f2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fe2" value="" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" edge="1" parent="1" source="f2" target="f3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fe3" value="" style="endArrow=block;endFill=1;html=1;fontSize=11;labelBackgroundColor=default;strokeColor=#444444;" edge="1" parent="1" source="f3" target="f4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="step10" value="&lt;b&gt;Step 10: rebuild frontend on both instances&lt;/b&gt;&lt;br&gt;Set baseUrl in url.js to backend ALB DNS, build, copy to Nginx" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="304" width="600" height="56" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
